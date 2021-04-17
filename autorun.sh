@@ -39,3 +39,9 @@ fi
 run compton --shadow-exclude '!focused'
 run blueman-applet
 run msm_notifier
+
+
+# TODO: this line came from a Lua script, rewrite for bash
+# x-on-resize script for auto configuring xrandr when hdmi cable is (un)plugged
+# "x-on-resize --config /home/murchu27/quick-scripts/hdmi-change.sh > /home/murchu27/test1.txt",
+
