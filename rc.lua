@@ -7,7 +7,7 @@ local wibox = require("wibox")
 
 --TODO: figure out how to get lain and battery_widget working again
 -- local lain = require("lain")
---local battery_widget = require("awesome-wm-widgets.battery-widget.battery")
+local battery_widget = require("awesome-wm-widgets.battery-widget.battery")
 -- Theme handling library
 local beautiful = require("beautiful")
 -- Notification library
@@ -262,7 +262,7 @@ awful.screen.connect_for_each_screen(function(s)
         { -- Right widgets
             layout = wibox.layout.fixed.horizontal,
             mykeyboardlayout,
-            --battery_widget(), TODO: this will go here
+            battery_widget({warning_msg_title = "Get ya charga"}),
             wibox.widget.systray(),
             separator,
             mytextclock,
