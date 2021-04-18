@@ -6,9 +6,10 @@ This README documents changes from the default AwesomeWM config that ships with
 ## Presentation/Layout
 
 ### Font
-Made the font a bit smaller
+Made the font a bit smaller, including the font for notifications
 
     beautiful.font = "Noto Sans Regular 9"
+    beautiful.notification_font = "Noto Sans Bold 11"
 
 ### Layouts
 Added the [centerwork layout][5] from [lain][6]

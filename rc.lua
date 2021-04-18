@@ -55,7 +55,7 @@ beautiful.bg_focus          = "#2C3940"
 beautiful.titlebar_close_button_normal = "/usr/share/awesome/themes/cesious/titlebar/close_normal_adapta.png"
 beautiful.titlebar_close_button_focus = "/usr/share/awesome/themes/cesious/titlebar/close_focus_adapta.png"
 beautiful.font              = "Noto Sans Regular 9"
-beautiful.notification_font = "Noto Sans Bold 14"
+beautiful.notification_font = "Noto Sans Bold 11"
 
 -- Add icon for centerwork layout
 -- May move this to a `theme.lua` later
