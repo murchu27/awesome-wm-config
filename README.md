@@ -15,6 +15,71 @@ Made the height of the wibar a bit smaller
 
     s.mywibox = awful.wibar({ position = "top", height = 24, screen = s })
 
+#### Widgets
+Added a battery-widget, from [awesome-wm-widgets][4]. Also changed the warning
+message that it usually displays for low battery.
+
+    local battery_widget = require("awesome-wm-widgets.battery-widget.battery")
+    ...
+    s.mywibox:setup {
+    ...
+        { -- Right widgets
+            ...
+            battery_widget({warning_msg_title = "Get ya charga"}),
+            ...
+        }
+    ...
+    }
+
+
+### Wallpaper
+Added a neato wallpaper
+
+    beautiful.wallpaper = "/home/murchu27/.config/awesome/botw-wallpaper.jpg"
+
+
+### Clients
+#### Useless gaps
+Added a bit of space between clients
+
+    beautiful.useless_gap = 5
+
+
+#### Titlebars
+Removed titlebars (they just take up space)
+
+    awful.rules.rules = {
+        ...
+        { rule_any = {type = { "normal", "dialog" }
+            }, properties = { titlebars_enabled = false }
+        },
+        ...
+    }
+
+
+#### Floating clients
+Added some more floating clients to the default list
+
+    awful.rules.rules = {
+        ...
+        { rule_any = {
+            ...
+            class = {
+                ...
+                "Blueman-manager",
+                "Godot_Engine", -- this one's not working yet
+                ...
+            },
+            role = {
+                ...
+                "ConfigManager",
+                ...
+            },
+            ...
+        }, properties = { floating = true }},
+        ...
+    }
+
 
 ## Behaviour
 
@@ -36,6 +101,12 @@ my laptop screen enabled. This lets optimus-manager stay in [hybrid mode][3],
 without causing performance issues (can't find a reference with a quick search,
 but try it yourself, turning off the laptop screen in hybrid mode causes lag).
 
+### Default master width factor
+Changed how wide the master client appears by default
+
+    beautiful.master_width_factor = 0.65
+
+
 ## Programs
 
 ### Defaults
@@ -52,6 +123,17 @@ Added a shortcut to open gvim
     awful.key({ modkey,           }, "g", function () awful.spawn(gui_editor) end,
               {description = "open gvim", group = "launcher"}),
 
+Added a shortcut to change keyboard layout for when I'm not on my Atreus (needs
+work)
+
+    awful.key({ modkey, "Shift"   }, "space", function () awful.util.spawn("setxkbmap us -variant colemak") end,
+                {description = "switch kb layout", group = "layout"}),
+
+Added a shortcut for "select next layout", which really should have been there
+
+    awful.key({ modkey,           }, "space", function () awful.layout.inc( 1)                  end,
+                {description = "select next", group = "layout"}),
+
 Changed the shortcuts for taking screenshots, as I use a small form factor
 keyboard which doesn't have the "Print" button
 
@@ -62,6 +144,18 @@ keyboard which doesn't have the "Print" button
     awful.key({ modkey, "Control"           }, "s", function () awful.spawn.with_shell("sleep 0.1 && /usr/bin/i3-scrot -s")   end,
               {description = "capture a screenshot of selection", group = "screenshot"}),
 
+Changed the shortcut for the Lua prompt, which uses ö by default (not an option
+on my keyboard)
+
+    awful.key({ modkey }, "x",
+        function ()
+            awful.prompt.run { ... })
+
+This also forced me to change the default shortcut for closing a client
+
+    awful.key({ modkey, "Control" }, "x",      function (c) c:kill()                         end,
+
  [1]: https://gitlab.manjaro.org/profiles-and-settings/desktop-settings/-/tree/master/community/awesome/skel/.config/awesome
  [2]: https://stackoverflow.com/questions/66687389/changing-default-focused-screen-on-awesome-wm
  [3]: https://github.com/Askannz/optimus-manager#usage
+ [4]: https://github.com/streetturtle/awesome-wm-widgets
