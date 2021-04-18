@@ -5,12 +5,6 @@ This README documents changes from the default AwesomeWM config that ships with
 
 ## Presentation/Layout
 
-### Font
-Made the font a bit smaller, including the font for notifications
-
-    beautiful.font = "Noto Sans Regular 9"
-    beautiful.notification_font = "Noto Sans Bold 11"
-
 ### Layouts
 Added the [centerwork layout][5] from [lain][6]
 
@@ -52,12 +46,8 @@ message that it usually displays for low battery.
     ...
     }
 
-
-### Wallpaper
-Added a neato wallpaper
-
-    beautiful.wallpaper = "/home/murchu27/.config/awesome/botw-wallpaper.jpg"
-
+This required installing [arc-icon-theme-git][8] and
+[moka-icon-theme-git][9] from the AUR.
 
 ### Clients
 #### Useless gaps
@@ -100,6 +90,18 @@ Added some more floating clients to the default list
         }, properties = { floating = true }},
         ...
     }
+
+
+### Font
+Made the font a bit smaller, including the font for notifications
+
+    beautiful.font = "Noto Sans Regular 9"
+    beautiful.notification_font = "Noto Sans Bold 11"
+
+### Wallpaper
+Added a neato wallpaper
+
+    beautiful.wallpaper = "/home/murchu27/.config/awesome/botw-wallpaper.jpg"
 
 
 ## Behaviour
@@ -183,3 +185,5 @@ This also forced me to change the default shortcut for closing a client
  [5]: https://github.com/lcpz/lain/wiki/Layouts#centerwork
  [6]: https://github.com/lcpz/lain
  [7]: https://aur.archlinux.org/packages/lain-git
+ [8]: https://aur.archlinux.org/packages/arc-icon-theme-git/
+ [9]: https://aur.archlinux.org/packages/moka-icon-theme-git/
