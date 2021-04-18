@@ -99,9 +99,16 @@ Made the font a bit smaller, including the font for notifications
     beautiful.notification_font = "Noto Sans Bold 11"
 
 ### Wallpaper
-Added a neato wallpaper
+Added some neato wallpapers. Each screen is set based on its resolution (as I
+have a regular 16:9 laptop screen, and a 21:9 external monitor)
 
-    beautiful.wallpaper = "/home/murchu27/.config/awesome/botw-wallpaper.jpg"
+    beautiful.wallpaper = function(s)
+        if s.geometry.width == 1920 then
+            return "/home/murchu27/.config/awesome/wallpapers/hyrule.jpg"
+        elseif s.geometry.width == 2560 then
+            return "/home/murchu27/.config/awesome/wallpapers/summit.png"
+        end
+    end
 
 
 ## Behaviour

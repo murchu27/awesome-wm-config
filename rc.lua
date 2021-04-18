@@ -46,7 +46,14 @@ end
 -- Themes define colours, icons, font and wallpapers.
 -- Chosen colors and buttons look alike adapta maia theme
 beautiful.init("/usr/share/awesome/themes/cesious/theme.lua")
-beautiful.wallpaper = "/home/murchu27/.config/awesome/botw-wallpaper.jpg"
+beautiful.wallpaper = function(s)
+    if s.geometry.width == 1920 then
+        return "/home/murchu27/.config/awesome/wallpapers/hyrule.jpg"
+    elseif s.geometry.width == 2560 then
+        return "/home/murchu27/.config/awesome/wallpapers/summit.png"
+    end
+end
+
 beautiful.master_width_factor = 0.65
 beautiful.useless_gap = 5
 beautiful.icon_theme        = "Papirus-Dark"
