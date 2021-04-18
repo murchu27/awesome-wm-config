@@ -5,8 +5,7 @@ require("awful.autofocus")
 -- Widget and layout library
 local wibox = require("wibox")
 
---TODO: figure out how to get lain and battery_widget working again
--- local lain = require("lain")
+local lain = require("lain")
 local battery_widget = require("awesome-wm-widgets.battery-widget.battery")
 -- Theme handling library
 local beautiful = require("beautiful")
@@ -58,6 +57,12 @@ beautiful.titlebar_close_button_focus = "/usr/share/awesome/themes/cesious/title
 beautiful.font              = "Noto Sans Regular 9"
 beautiful.notification_font = "Noto Sans Bold 14"
 
+-- Add icon for centerwork layout
+-- May move this to a `theme.lua` later
+-- The icon itself is also made for another theme, so I may edit it to better match the cesious theme
+theme.lain_icons = os.getenv("HOME") .. "/.config/awesome/lain/icons/layout/default/"
+theme.layout_centerwork = theme.lain_icons .. "centerwork.png"
+
 -- This is used later as the default terminal and editor to run.
 browser = "exo-open --launch WebBrowser" or "firefox"
 filemanager = "exo-open --launch FileManager" or "thunar"
@@ -78,8 +83,7 @@ awful.layout.layouts = {
     -- awful.layout.suit.tile.bottom,
     -- awful.layout.suit.tile.top,
     awful.layout.suit.fair,
-    -- TODO: figure out how to get the below working
-    -- lain.layout.centerwork,
+    lain.layout.centerwork,
     -- awful.layout.suit.fair.horizontal,
     -- awful.layout.suit.spiral,
     -- awful.layout.suit.spiral.dwindle,

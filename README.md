@@ -10,6 +10,26 @@ Made the font a bit smaller
 
     beautiful.font = "Noto Sans Regular 9"
 
+### Layouts
+Added the [centerwork layout][5] from [lain][6]
+
+    local lain = require("lain")
+    ...
+    theme.lain_icons = os.getenv("HOME") .. "/.config/awesome/lain/icons/layout/default/"
+    theme.layout_centerwork = theme.lain_icons .. "centerwork.png"
+    ...
+    awful.layout.layouts = {
+        ...
+        lain.layout.centerwork,
+        ...
+    }
+
+This required installing lain [from the AUR][7], and then symlinking the lain
+installation directory in `~/.config/awesome` (this symlink should already be
+present in this repo).
+
+Also commented out a good few layouts that I don't use
+
 ### Wibar
 Made the height of the wibar a bit smaller
 
@@ -159,3 +179,6 @@ This also forced me to change the default shortcut for closing a client
  [2]: https://stackoverflow.com/questions/66687389/changing-default-focused-screen-on-awesome-wm
  [3]: https://github.com/Askannz/optimus-manager#usage
  [4]: https://github.com/streetturtle/awesome-wm-widgets
+ [5]: https://github.com/lcpz/lain/wiki/Layouts#centerwork
+ [6]: https://github.com/lcpz/lain
+ [7]: https://aur.archlinux.org/packages/lain-git
