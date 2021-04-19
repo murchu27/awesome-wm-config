@@ -32,7 +32,8 @@ Made the height of the wibar a bit smaller
 
 #### Widgets
 Added a battery-widget, from [awesome-wm-widgets][4]. Also changed the warning
-message that it usually displays for low battery.
+message that it usually displays for low battery. This required installing
+[arc-icon-theme-git][8] and [moka-icon-theme-git][9] from the AUR.
 
     local battery_widget = require("awesome-wm-widgets.battery-widget.battery")
     ...
@@ -46,8 +47,23 @@ message that it usually displays for low battery.
     ...
     }
 
-This required installing [arc-icon-theme-git][8] and
-[moka-icon-theme-git][9] from the AUR.
+Added a volume-widget, from [awesome-wm-widgets][4]. The widget only appears
+when `amixer` is available (installed from the `alsa-utils` package), and when
+`pulseaudio-alsa` is installed. By default, it allows muting by clicking the
+icon, and changing volume level by scrolling on it. Hotkeys can also be set up.
+
+    local volume_widget = require("awesome-wm-widgets.volume-widget.volume")
+    ...
+    s.mywibox:setup {
+    ...
+        { -- Right widgets
+            ...
+            volume_widget(),
+            ...
+        }
+    ...
+    }
+
 
 ### Clients
 #### Useless gaps
