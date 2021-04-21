@@ -420,8 +420,8 @@ globalkeys = gears.table.join(
               {description = "show the menubar", group = "launcher"}),
 
     -- Other controls
-    awful.key({},  "XF86MonBrightnessUp" , function () brightness_widget:inc() end, {description = "increase brightness", group = "custom"}),
-    awful.key({},  "XF86MonBrightnessDown" , function () brightness_widget:dec() end, {description = "decrease brightness", group = "custom"})
+    awful.key({}, "XF86MonBrightnessUp", function() brightness_widget:inc() end, {description = "increase brightness", group = "custom"}),
+    awful.key({}, "XF86MonBrightnessDown", function() brightness_widget:dec() end, {description = "decrease brightness", group = "custom"})
 )
 
 clientkeys = gears.table.join(

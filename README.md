@@ -80,9 +80,9 @@ the `light` package (from arch linux repositories).
     }
 
 `light {-A|-U|-S}` only work on my laptop when run with super user permissions,
-so I had to edit the command variables that come with the widget to add `sudo`
-at the beginning. Also had allow my user to run `sudo light` without a password;
-see [this article][10].
+so I had to edit `awesome-wm-widgets/brightness-widget/brightness.lua` to add
+`sudo` at the beginning of the command variables. Also had allow my user to
+run `sudo light` without a password; see [this article][10].
 
 
     local function worker(user_args)
@@ -202,8 +202,12 @@ to an editor)
 
 Added a shortcut to open gvim
 
-    awful.key({ modkey,           }, "g", function () awful.spawn(gui_editor) end,
-              {description = "open gvim", group = "launcher"}),
+    globalkeys = gears.table.join(
+        ...
+        awful.key({ modkey,           }, "g", function () awful.spawn(gui_editor) end,
+                  {description = "open gvim", group = "launcher"}),
+        ...
+    )
 
 Added a shortcut to change keyboard layout for when I'm not on my Atreus (needs
 work)
@@ -215,6 +219,12 @@ Added a shortcut for "select next layout", which really should have been there
 
     awful.key({ modkey,           }, "space", function () awful.layout.inc( 1)                  end,
                 {description = "select next", group = "layout"}),
+
+Added shortcuts to control brightness via the widget
+
+    awful.key({}, "XF86MonBrightnessUp", function() brightness_widget:inc() end, {description = "increase brightness", group = "custom"}),
+    awful.key({}, "XF86MonBrightnessDown", function() brightness_widget:dec() end, {description = "decrease brightness", group = "custom"})
+
 
 Changed the shortcuts for taking screenshots, as I use a small form factor
 keyboard which doesn't have the "Print" button
@@ -236,6 +246,7 @@ on my keyboard)
 This also forced me to change the default shortcut for closing a client
 
     awful.key({ modkey, "Control" }, "x",      function (c) c:kill()                         end,
+
 
  [1]: https://gitlab.manjaro.org/profiles-and-settings/desktop-settings/-/tree/master/community/awesome/skel/.config/awesome
  [2]: https://stackoverflow.com/questions/66687389/changing-default-focused-screen-on-awesome-wm
