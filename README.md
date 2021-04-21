@@ -220,10 +220,18 @@ Added a shortcut for "select next layout", which really should have been there
     awful.key({ modkey,           }, "space", function () awful.layout.inc( 1)                  end,
                 {description = "select next", group = "layout"}),
 
+
 Added shortcuts to control brightness via the widget
 
     awful.key({}, "XF86MonBrightnessUp", function() brightness_widget:inc() end, {description = "increase brightness", group = "custom"}),
     awful.key({}, "XF86MonBrightnessDown", function() brightness_widget:dec() end, {description = "decrease brightness", group = "custom"})
+
+
+Added shortcuts to control volume via the widget
+
+    awful.key({}, "XF86AudioRaiseVolume", function() volume_widget:inc() end, {description = "increase volume", group = "custom"}),
+    awful.key({}, "XF86AudioLowerVolume", function() volume_widget:dec() end, {description = "decrease volume", group = "custom"}),
+    awful.key({}, "XF86AudioMute", function() volume_widget:toggle() end, {description = "toggle mute", group = "custom"})
 
 
 Changed the shortcuts for taking screenshots, as I use a small form factor
