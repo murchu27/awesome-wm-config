@@ -64,6 +64,42 @@ icon, and changing volume level by scrolling on it. Hotkeys can also be set up.
     ...
     }
 
+Added a brightness-widget, from [awesome-wm-widgets][4]. The widget depends on
+the `light` package (from arch linux repositories).
+
+    local brightness_widget = require("awesome-wm-widgets.brightness-widget.brightness")
+    ...
+    s.mywibox:setup {
+    ...
+        { -- Right widgets
+            ...
+            brightness_widget({ tooltip = true }),
+            ...
+        }
+    ...
+    }
+
+`light {-A|-U|-S}` only work on my laptop when run with super user permissions,
+so I had to edit the command variables that come with the widget to add `sudo`
+at the beginning. Also had allow my user to run `sudo light` without a password;
+see [this article][10].
+
+
+    local function worker(user_args)
+        local program = args.program or 'light'
+        local step = args.step or 5
+        ...
+
+        if program == 'light' then
+            get_brightness_cmd = 'light -G'
+            set_brightness_cmd = 'sudo light -S ' -- <level>
+            inc_brightness_cmd = 'sudo light -A ' .. step
+            dec_brightness_cmd = 'sudo light -U ' .. step
+        ...
+        end
+
+        ...
+    end
 
 ### Clients
 #### Useless gaps
@@ -210,3 +246,4 @@ This also forced me to change the default shortcut for closing a client
  [7]: https://aur.archlinux.org/packages/lain-git
  [8]: https://aur.archlinux.org/packages/arc-icon-theme-git/
  [9]: https://aur.archlinux.org/packages/moka-icon-theme-git/
+ [10]: https://linuxhandbook.com/sudo-without-password/

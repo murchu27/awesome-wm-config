@@ -8,6 +8,7 @@ local wibox = require("wibox")
 local lain = require("lain")
 local battery_widget = require("awesome-wm-widgets.battery-widget.battery")
 local volume_widget = require("awesome-wm-widgets.volume-widget.volume")
+local brightness_widget = require("awesome-wm-widgets.brightness-widget.brightness")
 
 -- Theme handling library
 local beautiful = require("beautiful")
@@ -276,6 +277,7 @@ awful.screen.connect_for_each_screen(function(s)
             layout = wibox.layout.fixed.horizontal,
             mykeyboardlayout,
             volume_widget(),
+            brightness_widget({ tooltip = true }),
             battery_widget({warning_msg_title = "Get ya charga"}),
             wibox.widget.systray(),
             separator,
@@ -415,7 +417,11 @@ globalkeys = gears.table.join(
               {description = "lua execute prompt", group = "awesome"}),
     -- Menubar
     awful.key({ modkey }, "p", function() menubar.show() end,
-              {description = "show the menubar", group = "launcher"})
+              {description = "show the menubar", group = "launcher"}),
+
+    -- Other controls
+    awful.key({},  "XF86MonBrightnessUp" , function () brightness_widget:inc() end, {description = "increase brightness", group = "custom"}),
+    awful.key({},  "XF86MonBrightnessDown" , function () brightness_widget:dec() end, {description = "decrease brightness", group = "custom"})
 )
 
 clientkeys = gears.table.join(
