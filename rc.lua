@@ -51,9 +51,9 @@ end
 beautiful.init("/usr/share/awesome/themes/cesious/theme.lua")
 beautiful.wallpaper = function(s)
     if s.geometry.width == 1920 then
-        return "/home/murchu27/.config/awesome/wallpapers/hyrule.jpg"
+        return os.getenv("HOME") .. "/.config/awesome/wallpapers/hyrule.jpg"
     elseif s.geometry.width == 2560 then
-        return "/home/murchu27/.config/awesome/wallpapers/summit.png"
+        return os.getenv("HOME") .. "/.config/awesome/wallpapers/summit.png"
     end
 end
 
@@ -350,6 +350,8 @@ globalkeys = gears.table.join(
               {description = "reload awesome", group = "awesome"}),
     awful.key({ modkey, "Shift"   }, "q", awesome.quit,
               {description = "quit awesome", group = "awesome"}),
+    awful.key({ modkey, "Control"   }, "i", function () awful.spawn(gui_editor .. " " .. awesome.conffile) end,
+              {description = "edit config", group = "awesome"}),
 
     -- User program
     awful.key({ modkey     }, "b", function () awful.spawn(browser)          end,

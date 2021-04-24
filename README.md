@@ -156,9 +156,9 @@ have a regular 16:9 laptop screen, and a 21:9 external monitor)
 
     beautiful.wallpaper = function(s)
         if s.geometry.width == 1920 then
-            return "/home/murchu27/.config/awesome/wallpapers/hyrule.jpg"
+            return os.getenv("HOME") .. "/.config/awesome/wallpapers/hyrule.jpg"
         elseif s.geometry.width == 2560 then
-            return "/home/murchu27/.config/awesome/wallpapers/summit.png"
+            return os.getenv("HOME") .. "/.config/awesome/wallpapers/summit.png"
         end
     end
 
@@ -208,6 +208,11 @@ Added a shortcut to open gvim
                   {description = "open gvim", group = "launcher"}),
         ...
     )
+
+Added a shortcut to open the currently loaded awesome config in gvim
+
+    awful.key({ modkey, "Control"   }, "i", function () awful.spawn(gui_editor .. " " .. awesome.conffile) end,
+              {description = "edit config", group = "awesome"}),
 
 Added a shortcut to change keyboard layout for when I'm not on my Atreus (needs
 work)
