@@ -76,8 +76,9 @@ theme.layout_centerwork = theme.lain_icons .. "centerwork.png"
 -- This is used later as the default terminal and editor to run.
 browser = "exo-open --launch WebBrowser" or "firefox"
 filemanager = "exo-open --launch FileManager" or "thunar"
-gui_editor = "gvim"
 terminal = os.getenv("TERMINAL") or "lxterminal"
+term_editor = terminal .. " -e nvim"
+gui_editor = term_editor
 
 -- Default modkey.
 -- Usually, Mod4 is the key with a logo between Control and Alt.

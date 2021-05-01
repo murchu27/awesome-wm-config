@@ -193,11 +193,16 @@ Changed how wide the master client appears by default
 
 ### Defaults
 
-Changed `gui_editor` (which the default config uses anytime an argument refers
-to an editor)
+Added a `term_editor`: neovim
 
-    gui_editor = "gvim"
-    
+    term_editor = terminal .. " -e nvim"
+
+Changed `gui_editor` (which the default config uses anytime an argument refers
+to an editor). This just uses `term_editor`, since neovim looks well enough in a
+terminal to substitute a `gui_editor`.
+
+    gui_editor = term_editor
+
 ### Shortcuts
 
 Added a shortcut to open gvim
